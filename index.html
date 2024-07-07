@@ -1,164 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta name="description" content="Cek Oshi Kamu" />
-    <meta name="keywords" content="Cek Oshi, Oshi, JKT48, Cek Oshi Online, Oshi Online" />
-    <meta name="author" content="Ryuu48" />
-    <meta name="robots" content="index, follow" />
-    <meta name="revisit-after" content="7 days" />
-    <meta name="language" content="Indonesia" />
-    <meta name="copyright" content="Ryuu48" />
-    <title>Cek Oshi</title>
-    <link
-      href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/css/bootstrap.min.css"
-      rel="stylesheet" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Chivo"
-      rel="stylesheet" />
-    <link href="./style.css" rel="stylesheet" type="text/css" />
-    <link rel="icon" type="image/png" href="./src/image/logo.jpg" />
-  </head>
 
-  <body>
-    <div class="card-container">
-      <div class="card mb-4">
-        <div class="card-body">
-          <h2 class="card-title" id="CekOshi">Cek Oshi Kamu</h2>
-          <div id="inputContainer">
-            <div class="inputText">
-              <input
-                type="text"
-                placeholder="Nama Kamu"
-                id="namaInput"
-                class="input" />
-            </div>
-            <button class="btn btn-primary" id="cekOshiButton">Cek Oshi</button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="description" content="Cek Oshi Kamu" />
+  <meta name="keywords" content="Cek Oshi, Oshi, JKT48, Cek Oshi Online, Oshi Online" />
+  <meta name="robots" content="index, follow" />
+  <meta name="revisit-after" content="7 days" />
+  <meta name="language" content="Indonesia" />
+  <title>Cek Oshi</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Chivo" rel="stylesheet" />
+  <link href="./style.css" rel="stylesheet" type="text/css" />
+  <!-- <link rel="icon" type="image/png" href="./src/image/logo.jpg" /> -->
+</head>
+
+<body>
+  <div class="card-container">
+    <div class="card mb-4">
+      <div class="card-body">
+        <h2 class="card-title" id="CekOshi">Cek Oshi Kamu</h2>
+        <div id="inputContainer">
+          <div class="inputText">
+            <input type="text" placeholder="Nama Kamu" id="namaInput" class="input" />
           </div>
-          <div class="newtons-cradle" id="loading">
-            <div class="newtons-cradle__dot"></div>
-            <div class="newtons-cradle__dot"></div>
-            <div class="newtons-cradle__dot"></div>
-            <div class="newtons-cradle__dot"></div>
-          </div>
-          <div id="result" class="mt-3" style="display: none">
-            <h2 id="resultText"></h2>
-            <img id="resultImage" src="" alt="" class="img-fluid" />
-          </div>
-          <button
-            class="btn btn-secondary mt-3"
-            id="ulangButton"
-            style="display: none">
-            Ulangi
-          </button>
+          <button class="btn btn-primary" id="cekOshiButton">Cek Oshi</button>
         </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h2 class="card-title">Top 10 Latest Cek Oshi</h2>
-          <ul
-            class="list-group"
-            id="top10List"
-            style="list-style-type: none; padding-left: 0"></ul>
+        <div class="newtons-cradle" id="loading">
+          <div class="newtons-cradle__dot"></div>
+          <div class="newtons-cradle__dot"></div>
+          <div class="newtons-cradle__dot"></div>
+          <div class="newtons-cradle__dot"></div>
         </div>
+        <div id="result" class="mt-3" style="display: none">
+          <h2 id="resultText"></h2>
+          <img id="resultImage" src="" alt="" class="img-fluid" />
+        </div>
+        <button class="btn btn-secondary mt-3" id="ulangButton" style="display: none">
+          Ulangi
+        </button>
       </div>
-      <footer>
-        <p>☀ Dev by Ryuu48 ☀</p>
-      </footer>
     </div>
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title">Top 10 Latest Cek Oshi</h2>
+        <ul class="list-group" id="top10List" style="list-style-type: none; padding-left: 0"></ul>
+      </div>
+    </div>
+    <footer>
+    </footer>
+  </div>
 
-    <script>
-      const cekOshiButton = document.getElementById("cekOshiButton");
-      const cekOshi = document.getElementById("CekOshi");
-      const ulangButton = document.getElementById("ulangButton");
-      const resultDiv = document.getElementById("result");
-      const resultText = document.getElementById("resultText");
-      const resultImage = document.getElementById("resultImage");
-      const namaInput = document.getElementById("namaInput");
-      const top10List = document.getElementById("top10List");
-      const loading = document.getElementById("loading");
-      const inputContainer = document.getElementById("inputContainer");
+  <script>
+    const cekOshiButton = document.getElementById("cekOshiButton");
+    const cekOshi = document.getElementById("CekOshi");
+    const ulangButton = document.getElementById("ulangButton");
+    const resultDiv = document.getElementById("result");
+    const resultText = document.getElementById("resultText");
+    const resultImage = document.getElementById("resultImage");
+    const namaInput = document.getElementById("namaInput");
+    const top10List = document.getElementById("top10List");
+    const loading = document.getElementById("loading");
+    const inputContainer = document.getElementById("inputContainer");
 
-      const memberImages = [
-        "Aralie.jpeg",
-        "Delynn.jpeg",
-        "Erine.jpeg",
-        "Fritzy.jpeg",
-        "Kimmy.jpeg",
-        "Lana.jpeg",
-        "Levi.jpeg",
-        "Lily.jpeg",
-        "Moreen.jpeg",
-        "Nachia.jpeg",
-        "Nala.jpeg",
-        "Nayla.jpeg",
-        "Oline.jpeg",
-        "Regie.jpeg",
-        "Ribka.jpeg",
-        "Shasa.jpeg",
-        "Trisha.jpeg",
-      ];
+    const memberImages = [
+      "Aralie.jpeg",
+      "Delynn.jpeg",
+      "Erine.jpeg",
+      "Fritzy.jpeg",
+      "Kimmy.jpeg",
+      "Lana.jpeg",
+      "Levi.jpeg",
+      "Lily.jpeg",
+      "Moreen.jpeg",
+      "Nachia.jpeg",
+      "Nala.jpeg",
+      "Nayla.jpeg",
+      "Oline.jpeg",
+      "Regie.jpeg",
+      "Ribka.jpeg",
+      "Shasa.jpeg",
+      "Trisha.jpeg",
+      "Amanda Sukma.jpeg",
+      "Angelina Christy.jpeg",
+      "Aurellia.jpeg",
+      "Azizi Asadel.jpeg",
+      "Callista Alifia.jpeg",
+      "Cornelia Vanisa.jpeg",
+      "Febriola Sinambela.jpeg",
+      "Feni Fitriyanti.jpeg",
+      "Fiony Alveria.jpeg",
+      "Flora Shafiq.jpeg",
+      "Freya Jayawardana.jpeg",
+      "Gabriela Abigail.jpeg",
+      "Gita Sekar Andarini.jpeg",
+      "Grace Octaviani.jpeg",
+      "Greesella Adhalia.jpeg",
+      "Helisma Putri.jpeg",
+      "Indah Cahya.jpeg",
+      "Indira Seruni.jpeg",
+      "Jessica Chandra.jpeg",
+      "Jesslyn Elly.jpeg",
+      "Kathrina Irene.jpeg",
+      "Lulu Salsabila.jpeg",
+      "Marsha Lenathea.jpeg",
+      "Mutiara Azzahra.jpeg",
+      "Raisha Syifa.jpeg",
+      "Reva Fidela.jpeg",
+      "Shania Gracia.jpeg",
+    ];
 
-      const top10CekOshi = [];
+    const top10CekOshi = [];
 
-      cekOshiButton.addEventListener("click", () => {
-        const nama = namaInput.value.trim();
-        if (nama === "") {
-          alert("Nama tidak boleh kosong!");
-          return;
-        }
-        // Animasi loading
-        cekOshiButton.disabled = true;
-        inputContainer.style.display = "none";
-        loading.style.display = "flex";
-        resultDiv.style.display = "none";
-        ulangButton.style.display = "none";
-        cekOshi.style.display = "none";
-
-        setTimeout(() => {
-          const randomIndex = Math.floor(Math.random() * memberImages.length);
-          const selectedImage = memberImages[randomIndex];
-          const memberName = selectedImage.split(".")[0];
-          resultText.textContent = `Oshi dari ${nama} adalah ${memberName}`;
-          resultImage.src = `src/member/${selectedImage}`;
-          resultImage.alt = memberName;
-
-          loading.style.display = "none";
-          resultDiv.style.display = "block";
-          ulangButton.style.display = "inline-block";
-          cekOshi.style.display = "none";
-          cekOshiButton.disabled = false;
-
-          top10CekOshi.unshift({nama, memberName});
-          if (top10CekOshi.length > 10) {
-            top10CekOshi.pop();
-          }
-          updateTop10List();
-        }, 1000);
-      });
-
-      ulangButton.addEventListener("click", () => {
-        resultDiv.style.display = "none";
-        ulangButton.style.display = "none";
-        inputContainer.style.display = "";
-        cekOshi.style.display = "";
-        inputContainer.style.alignContent = "center";
-        inputContainer.style.justifyContent = "center";
-        namaInput.value = "";
-        cekOshiButton.disabled = false;
-      });
-
-      function updateTop10List() {
-        top10List.innerHTML = "";
-        top10CekOshi.forEach((item) => {
-          const li = document.createElement("li");
-          li.className = "list-group-item";
-          li.textContent = `Oshi dari ${item.nama} adalah ${item.memberName}`;
-          top10List.appendChild(li);
-        });
+    cekOshiButton.addEventListener("click", () => {
+      const nama = namaInput.value.trim();
+      if (nama === "") {
+        alert("Nama tidak boleh kosong!");
+        return;
       }
-    </script>
-  </body>
+      // Animasi loading
+      cekOshiButton.disabled = true;
+      inputContainer.style.display = "none";
+      loading.style.display = "flex";
+      resultDiv.style.display = "none";
+      ulangButton.style.display = "none";
+      cekOshi.style.display = "none";
+
+      setTimeout(() => {
+        const randomIndex = Math.floor(Math.random() * memberImages.length);
+        const selectedImage = memberImages[randomIndex];
+        const memberName = selectedImage.split(".")[0];
+        resultText.textContent = `Oshi dari ${nama} adalah ${memberName}`;
+        resultImage.src = `src/member/${selectedImage}`;
+        resultImage.alt = memberName;
+
+        loading.style.display = "none";
+        resultDiv.style.display = "block";
+        ulangButton.style.display = "inline-block";
+        cekOshi.style.display = "none";
+        cekOshiButton.disabled = false;
+
+        top10CekOshi.unshift({ nama, memberName });
+        if (top10CekOshi.length > 10) {
+          top10CekOshi.pop();
+        }
+        updateTop10List();
+      }, 1000);
+    });
+
+    ulangButton.addEventListener("click", () => {
+      resultDiv.style.display = "none";
+      ulangButton.style.display = "none";
+      inputContainer.style.display = "";
+      cekOshi.style.display = "";
+      inputContainer.style.alignContent = "center";
+      inputContainer.style.justifyContent = "center";
+      namaInput.value = "";
+      cekOshiButton.disabled = false;
+    });
+
+    function updateTop10List() {
+      top10List.innerHTML = "";
+      top10CekOshi.forEach((item) => {
+        const li = document.createElement("li");
+        li.className = "list-group-item";
+        li.textContent = `Oshi dari ${item.nama} adalah ${item.memberName}`;
+        top10List.appendChild(li);
+      });
+    }
+  </script>
+</body>
+
 </html>

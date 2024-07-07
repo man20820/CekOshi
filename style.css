@@ -3,7 +3,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 98vh;
-  background-image: url(../src/image/Banner_DC.jpg);
+  /* background-image: url(../src/image/Banner_DC.jpg); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
